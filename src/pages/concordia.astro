@@ -198,18 +198,23 @@
     </p>
   </footer>
 
-  <!-- FADE-IN SCRIPT -->
-  <script>
-    const sections = document.querySelectorAll('section.fade');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('show');
-        }
-      });
-    }, { threshold: 0.1 });
-    
-    sections.forEach(section => observer.observe(section));
+ <script>
+  const sections = document.querySelectorAll('section.fade');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, {
+    root: null,
+    rootMargin: '0px 0px -40% 0px', /* trigger before section center */
+    threshold: 0
+  });
+
+  sections.forEach(section => observer.observe(section));
+</script>section));
   </script>
 
 </body>
